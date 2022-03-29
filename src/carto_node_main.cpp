@@ -1,6 +1,9 @@
 #include <ros/ros.h>
 #include <tf2_ros/transform_listener.h>
 
+#include "../include/slam_2d/top_level_node_options.h"
+#include "../include/slam_2d/node.h"
+
 namespace cartographer_ros{//有两个namespace，这应该是为了代码规范，为了防止其他翻译单元的访问，和static数据成员类似，防止其他翻译单元访问
 namespace{
     void Run(){
@@ -9,7 +12,7 @@ namespace{
         tf2_ros::Buffer tf_buffer{ros::Duration(kTfBufferCacheTimeInSeconds)};
         tf2_ros::TransformListener tf(tf_buffer);
         
-        //TopLevelOptions top_options;//定义一些顶层配置
+        TopLevelNodeOptions top_node_options;//定义一些顶层配置
         //TrajectoryOptions trajectory_options;//定义一些轨迹配置
         
         //利用tie函数，完成对top_options和trajectory_options的批量赋值。
