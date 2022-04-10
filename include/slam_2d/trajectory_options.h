@@ -27,6 +27,6 @@ namespace cartographer_ros{
         double landmarks_sampling_ratio;
     };
     
-    //TrajectoryOptions CreatTrajectoryOptions(LuaParameterDictionary* lua_parameter_dicitonary);
+    TrajectoryOptions CreatTrajectoryOptions(LuaParameterDictionary* lua_parameter_dicitonary);
 }
 #endif

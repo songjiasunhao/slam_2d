@@ -13,15 +13,15 @@ namespace{
         tf2_ros::TransformListener tf(tf_buffer);
         
         TopLevelNodeOptions top_node_options;//定义一些顶层配置
-        //TrajectoryOptions trajectory_options;//定义一些轨迹配置
+        TrajectoryOptions trajectory_options;//定义一些轨迹配置
         
         //利用tie函数，完成对top_options和trajectory_options的批量赋值。
         //将LoadOptions获取到的参数值分别赋给top_options和trajectory_options
-        //std::tie(top_options,trajectory_options)= LoadOptions(FLAGS_configuration_directory,FLAGS_configuration_basename);
+        std::tie(top_options,trajectory_options)= LoadOptions(FLAGS_configuration_directory,FLAGS_configuration_basename);
 
         //map_builder是一个cartographer::mapping::MapBuilder的unqiue_ptr，unqiue_ptr只能移动
        //make_unique是c++14
-        //auto map_builder = cartographer::mapping::CreatMapBuilder(top_option.map_builder_option);
+        auto map_builder = cartographer::mapping::CreatMapBuilder(top_option.map_builder_option);
 
        Node node(node_options, std::move(map_builder),&tf_buffer);
 
